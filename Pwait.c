@@ -30,7 +30,7 @@ int main ()
     {
       printf("child exit code:%d\n",(st>>8)&0xFF);
     }
-    else if(ret<0)
+    else if(ret>0)
     {
       printf("sig code:%d\n",st & 0x7F);
     }
