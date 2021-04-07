@@ -12,19 +12,25 @@ int main()
     perror("open error!");
   }
   char buff [1024];
-  int readret=read(0,buff,1024);
-  buff[readret]=0;
-  if(readret>0)
+  const char* tmp="please enter! \n";
+  while(1)
   {
-    write(cfd,buff,strlen(buff));
-  }
-  else if(readret==0)
-  {
-    printf("no input!\n");
-  }
-  else 
-  {
-    perror("read error!");
+    write(1,tmp,strlen(tmp));
+     int readret=read(0,buff,1024);
+     buff[readret]=0;
+    if(readret>0)
+    {
+       write(cfd,buff,strlen(buff));
+    }
+    else if(readret==0)
+    {
+       printf("no input!\n");
+       break;
+    }
+     else 
+    {
+      perror("read error!");
+    }
   }
   return 0;
 }
